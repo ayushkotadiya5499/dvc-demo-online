@@ -13,7 +13,8 @@ def drop_columns(df,column_name):
 def main():
     df=load_data('https://raw.githubusercontent.com/araj2/customer-database/refs/heads/master/Ecommerce%20Customers.csv')
     df=df.iloc[:,3:]
-    df=df[df['Length of Membership']>3]
+    df=drop_columns(df,'Avg. Session Length')
+    df=df[df['Length of Membership']>1]
     data='data'
     df.to_csv(os.path.join(data,'customer.csv'))
 
